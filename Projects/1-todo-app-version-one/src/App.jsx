@@ -4,39 +4,18 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import AppName from './components/AppName'
 import AddTodo from './components/AddTodo'
-
+import Task1 from './components/task1'
+import Task2 from './components/task2'
 function App() {
-  return <center class="todo-container">
+  return (<center className="todo-container">
     <AppName/>
-    <div class="container text-center">
-  <AddTodo/>
-
-  <div class="row">
-    <div class="col-6">
-      Buy Milk
+    <AddTodo/>
+    <div className="items-container">
+      <Task1/> 
+      <Task2/> 
     </div>
-    <div class="col-4">
-     4/10/2023
-    </div>
-    <div class="col-2">
-      <button type="button" class="btn btn-danger">Delete</button>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-6">
-      Go to college
-    </div>
-    <div class="col-4">
-     4/10/2023
-    </div>
-    <div class="col-2">
-      <button type="button" class="btn btn-danger">Delete</button>
-    </div>
-  </div>
-</div>
-  
-  </center>
+    
+  </center>)
 }
 
 export default App
