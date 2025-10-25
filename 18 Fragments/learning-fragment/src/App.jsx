@@ -5,15 +5,22 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import FoodItems from "./components/FoodItems";
 import ErrorMessage from "./components/ErrorMessage";
+import Container from "./components/Container";
 
 function App() {
   let foodItems = ["dal", "ghee", "rice", "chicken"];
   return (
-    <React.Fragment>
-      <h1>Healthy Food</h1>
+    <>
+    <Container>
+      <h1 className="food-heading">Healthy Food</h1>
       <ErrorMessage items = {foodItems}></ErrorMessage>
       <FoodItems items = {foodItems}></FoodItems>
-    </React.Fragment>
+    </Container>
+
+    <Container>
+      <p>Above is the list of healthy foods which are necessaey or your good health and well being</p>
+    </Container>
+    </>
   );
 }
 
