@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { BiMessageAdd } from "react-icons/bi";
 function AddTodo({ onAddButton }){
   const [todoText, setTodoText] = useState("");
   const [todoDate, setTodoDate] = useState("");
@@ -20,7 +20,8 @@ return  (
      <input type="date" value={todoDate} onChange={(event) => setTodoDate(event.target.value)}/>
     </div>
     <div className="col-2">
-      <button type="button" className="btn btn-success kg-button" onClick={() => addButton(todoText, todoDate)}>Add</button>
+      <button type="button" className="btn btn-success kg-button" onClick={() => addButton(todoText, todoDate)}><BiMessageAdd />
+</button>
     </div>
   </div>
   </div>
