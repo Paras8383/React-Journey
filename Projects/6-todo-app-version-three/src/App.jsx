@@ -29,7 +29,7 @@ function App() {
   }
   return (<center className="todo-container">
     <AppName/>
-    <AddTodo onAddButton = {onAddButton}/>
+    <AddTodo handleAddButton = {onAddButton}/>
     <TodoItems todoItems={todoItems} onDeleteButton={handleDeleteButton}/>
     
   </center>)
