@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useReducer } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,26 +7,42 @@ import AddTodo from './components/AddTodo'
 import TodoItem from './components/TodoItem'
 import TodoItems from './components/TodoItems'
 import { TodoItemsContext } from './store/todo-items-store'
-function App() {
-  // const todoItems = [{
-  //   name:'Buy Milk',
-  //   dueDate: '4/10/2023'
-  // },
-  // {
-  //   name: 'Go to college',
-  //   dueDate: '4/10/2023'
-  // }]
 
-  const [todoItems, setTodoItem] = useState([])
+const todoItemsReducer =(currTodoItems,action) => {
+  let newTodoItems = currTodoItems;
+  if(action.type === 'NEW_ITEM'){
+    newTodoItems = [...currTodoItems,{name:action.payload.todoText, dueDate: action.payload.todoDate}]
+  }
+  else if(action.type === 'DELETE_ITEM'){
+    newTodoItems = currTodoItems.filter(item => item.name !== action.payload.todoText);
+  }
+  return newTodoItems;
+}
+
+function App() {
+
+  // const [todoItems, setTodoItem] = useState([])
+  const [todoItems, dispatchTodoItems] = useReducer(todoItemsReducer, [])
 
   const addNewItem = (todoText, todoDate) => {
-    let newTodo = [...todoItems,{name:todoText, dueDate: todoDate}]
-    setTodoItem(newTodo);
+    const newItemAction = {
+      type: 'NEW_ITEM',
+      payload: {
+        todoText,
+        todoDate
+      }
+    }
+    dispatchTodoItems(newItemAction)
   }
 
   const deleteItem = (todoText) =>{
-    let newTodoItems = todoItems.filter(item => item.name !== todoText);
-    setTodoItem(newTodoItems);
+    const deleteItemAction = {
+      type: 'DELETE_ITEM',
+      payload: {
+        todoText
+      }
+    }
+    dispatchTodoItems(deleteItemAction)
   }
 
   
